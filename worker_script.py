@@ -19,7 +19,10 @@ INTERVAL=int(environ['INTERVAL'])
 DEBUG=environ['DEBUG'] == '1'
 
 
-client = tweepy.Client(bearer_token=BEARER_TOKEN)
+client = tweepy.Client(bearer_token=BEARER_TOKEN, access_token=ACCESS_TOKEN, access_token_secret=ACCESS_TOKEN_SECRET, consumer_key=API_KEY, consumer_secret=API_KEY_SECRET)
+auth = tweepy.OAuth1UserHandler(API_KEY, API_KEY_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+old_api = tweepy.API(auth)
+
 
 gc = gspread.service_account(filename='gsheet_credentials.json')
 sh = gc.open_by_key('1BW-qsvVEo54Xyv_8L1HK3FHx6e04Da97lwnhu02PgqI')
