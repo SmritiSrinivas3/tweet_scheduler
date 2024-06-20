@@ -1,0 +1,5 @@
+.env
+.log
+venv/
+env/
+gsheet_credentials.json
